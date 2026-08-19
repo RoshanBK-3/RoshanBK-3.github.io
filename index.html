@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Roshan BK | Software Engineer</title>
+    <meta name="description" content="Roshan BK - Software Engineer, Web Developer and Technology Enthusiast.">
+    <meta name="author" content="Roshan BK">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b14;
+            color: #f5f7ff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 11, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #6c63ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #c7cada;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #7c73ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 25px 70px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #5148ff;
+            filter: blur(180px);
+            opacity: 0.22;
+            top: -150px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #00d4ff;
+            filter: blur(180px);
+            opacity: 0.12;
+            bottom: -150px;
+            left: -100px;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 15px;
+            border: 1px solid rgba(124,115,255,0.4);
+            background: rgba(124,115,255,0.08);
+            border-radius: 30px;
+            color: #a9a3ff;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 82px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #8b83ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #aeb4c9;
+            font-size: 19px;
+            max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 23px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #6c63ff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #8179ff;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #30364b;
+            color: #dce0ef;
+        }
+
+        .btn-secondary:hover {
+            border-color: #6c63ff;
+            transform: translateY(-3px);
+        }
+
+        /* GENERAL */
+        section {
+            padding: 100px 25px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+        }
+
+        .section-title p {
+            color: #7c73ff;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #aeb4c9;
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .info-card {
+            background: #101522;
+            border: 1px solid #20273a;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 14px 0;
+            border-bottom: 1px solid #22293b;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row span:first-child {
+            color: #7f879d;
+        }
+
+        .info-row span:last-child {
+            color: #e6e9f4;
+            text-align: right;
+        }
+
+        /* SKILLS */
+        .skills {
+            background: #0b0f1a;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .skill {
+            background: #101522;
+            border: 1px solid #20273a;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-6px);
+            border-color: #6c63ff;
+        }
+
+        .skill-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .skill h3 {
+            font-size: 16px;
+        }
+
+        .skill p {
+            color: #858da3;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            background: #101522;
+            border: 1px solid #20273a;
+            border-radius: 15px;
+            padding: 28px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-7px);
+            border-color: #6c63ff;
+        }
+
+        .project-number {
+            color: #6c63ff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .project h3 {
+            margin: 12px 0;
+            font-size: 21px;
+        }
+
+        .project p {
+            color: #9299ad;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tech span {
+            font-size: 11px;
+            padding: 5px 9px;
+            background: #191f30;
+            border-radius: 5px;
+            color: #aeb5ca;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact-box h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #969db1;
+            margin-bottom: 30px;
+        }
+
+        .email {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: #8b83ff;
+            font-size: 18px;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid #20273a;
+            padding: 30px 25px;
+            text-align: center;
+            color: #666e84;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .contact-box h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Roshan<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+
+            <div class="hero-content">
+
+                <div class="tag">
+                    👋 Welcome to my website
+                </div>
+
+                <h1>
+                    Hi, I'm <br>
+                    <span class="gradient-text">Roshan BK.</span>
+                </h1>
+
+                <p>
+                    Software Engineer passionate about building modern,
+                    useful and beautiful web applications.
+                </p>
+
+                <div class="buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        View My Work →
+                    </a>
+
+                    <a href="#contact" class="btn btn-secondary">
+                        Contact Me
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+
+            <div class="section-title">
+                <p>About Me</p>
+                <h2>A little about me.</h2>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-text">
+
+                    <p>
+                        I'm Roshan BK, a Software Engineer interested in
+                        web development and modern technologies.
+                    </p>
+
+                    <p>
+                        I enjoy creating websites and applications that
+                        solve real-world problems while keeping the user
+                        experience simple and intuitive.
+                    </p>
+
+                    <p>
+                        I'm continuously learning new technologies and
+                        improving my skills through projects and practical
+                        experience.
+                    </p>
+
+                </div>
+
+                <div class="info-card">
+
+                    <div class="info-row">
+                        <span>Name</span>
+                        <span>Roshan BK</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Profession</span>
+                        <span>Software Engineer</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Location</span>
+                        <span>Nepal 🇳🇵</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Website</span>
+                        <span>roshanbk.com.np</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills">
+
+        <div class="container">
+
+            <div class="section-title">
+                <p>My Skills</p>
+                <h2>Technologies I work with.</h2>
+            </div>
+
+            <div class="skill-grid">
+
+                <div class="skill">
+                    <div class="skill-icon">🌐</div>
+                    <h3>HTML & CSS</h3>
+                    <p>Web Development</p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <p>Programming</p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-icon">⚛️</div>
+                    <h3>React</h3>
+                    <p>Frontend Development</p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-icon">▲</div>
+                    <h3>Next.js</h3>
+                    <p>Full Stack Web</p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-icon">🅰️</div>
+                    <h3>Angular</h3>
+                    <p>Frontend Development</p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Tailwind CSS</h3>
+                    <p>UI Development</p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-icon">🍃</div>
+                    <h3>MongoDB</h3>
+                    <p>Database</p>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-icon">🔧</div>
+                    <h3>Git & GitHub</h3>
+                    <p>Version Control</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="container">
+
+            <div class="section-title">
+                <p>Portfolio</p>
+                <h2>Some of my projects.</h2>
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project">
+                    <span class="project-number">01</span>
+
+                    <h3>Job Portal</h3>
+
+                    <p>
+                        A modern job portal where companies can post jobs
+                        and users can search and apply for opportunities.
+                    </p>
+
+                    <div class="tech">
+                        <span>React</span>
+                        <span>JavaScript</span>
+                        <span>Tailwind</span>
+                    </div>
+                </div>
+
+
+                <div class="project">
+                    <span class="project-number">02</span>
+
+                    <h3>Skill Sharing Platform</h3>
+
+                    <p>
+                        A platform designed for users to share and learn
+                        practical skills through educational content.
+                    </p>
+
+                    <div class="tech">
+                        <span>Next.js</span>
+                        <span>TypeScript</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+
+
+                <div class="project">
+                    <span class="project-number">03</span>
+
+                    <h3>Digital Marketplace</h3>
+
+                    <p>
+                        An online marketplace concept for buying and selling
+                        products through a simple web interface.
+                    </p>
+
+                    <div class="tech">
+                        <span>Web</span>
+                        <span>JavaScript</span>
+                        <span>CSS</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="contact-box">
+
+                <div class="section-title">
+                    <p>Contact</p>
+                    <h2>Let's connect.</h2>
+                </div>
+
+                <p>
+                    Have a project, opportunity, or simply want to say hello?
+                    Feel free to get in touch.
+                </p>
+
+                <a class="email"
+                   href="mailto:your-email@example.com">
+                    your-email@example.com
+                </a>
+
+                <br>
+
+                <a href="mailto:your-email@example.com"
+                   class="btn btn-primary">
+                    Send Me an Email
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Roshan BK. All rights reserved.
+    </footer>
+
+</body>
+</html>
